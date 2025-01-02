@@ -6,28 +6,11 @@ const https = require("https");
 const enableDestroy = require("server-destroy");
 const { JSDOM } = require("..");
 const { Canvas } = require("../lib/jsdom/utils");
-
-function toPathname(dirname, relativePath) {
-  let pathname = path.resolve(dirname, relativePath).replace(/\\/g, "/");
-  if (pathname[0] !== "/") {
-    pathname = "/" + pathname;
-  }
-  return pathname;
-}
-
-function toFileUrl(dirname, relativePath) {
-  return "file://" + toPathname(dirname, relativePath);
-}
+const { pathToFileURL } = require("url");
 
 exports.toFileUrl = dirname => {
   return function (relativePath) {
-    return toFileUrl(dirname, relativePath);
-  };
-};
-
-exports.toPathname = dirname => {
-  return function (relativePath) {
-    return toPathname(dirname, relativePath);
+    return pathToFileURL(path.resolve(dirname, relativePath)).href;
   };
 };
 
@@ -38,7 +21,7 @@ exports.load = dirname => {
     const file = path.resolve(dirname, "files/" + name + ".html");
 
     if (!options.url) {
-      options.url = toFileUrl(dirname, file);
+      options.url = pathToFileURL(path.resolve(dirname, file)).href;
     }
 
     const contents = fileCache[file] || fs.readFileSync(file, "utf8");

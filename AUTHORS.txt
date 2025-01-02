@@ -10,6 +10,7 @@ Alex Pearson <alex@alexpear.com>
 Alex Rattray <rattray.alex@gmail.com>
 Alex Soncodi <asoncodi@gmail.com>
 Alexander Flatter <flatter@gmail.com>
+Alexander Trefz <alexander.trefz@gmail.com>
 Alexis CHAPPRON <bullrot-10@hotmail.fr>
 Alistair Brown <github@alistairjcbrown.com>
 Alistair MacDonald <amacdonald@aisquared.com>
@@ -31,6 +32,7 @@ antonj <anton.johansson@gmail.com>
 Aria Stewart <aredridel@nbtsc.org>
 Arrix <arrixzhou@gmail.com>
 Aryan Arora <aryanarora278@gmail.com>
+asamuzaK (Kazz) <kazz@asamuzak.jp>
 Avery Fay <avery@mixpanel.com>
 Avi Deitcher <avi@deitcher.net>
 Avi Vahl <avi.vahl@wix.com>
@@ -46,6 +48,7 @@ Brian McDaniel <brianmcd05@gmail.com>
 Brian Peacock <bpeacock@fastfig.com>
 Carlos Serrano <carlos.pastor@mailonline.co.uk>
 Chad Walker <chad@chad-cat-lore-eddie.com>
+Chengzhong Wu <legendecas@gmail.com>
 Chris Buckley <chris@cmbuckley.co.uk>
 Chris Carpita <ccarpita@gmail.com>
 Chris Hughes <contact@chrishughesdev.com>
@@ -64,11 +67,13 @@ Dan Lidral-Porter <dan@luckysort.com>
 Daniel Boelzle [:dbo] <dbo@numberfour.eu>
 Daniel Cassidy <mail@danielcassidy.me.uk>
 Daniel Cousens <github@dcousens.com>
+Daniel Kaplan <tieTYT@gmail.com>
 Daniël van de Burgt <daniel.vandeburgt@serialssolutions.com>
 d-ash <andrey.shubin@gmail.com>
 Dav Glass <davglass@gmail.com>
 Dave Clark <dave@dcwarwick.org.uk>
 Dave Methvin <dave.methvin@gmail.com>
+David Myers <davidrmyersii@gmail.com>
 Davide P. Cervone <dpvc@union.edu>
 Derek Lindahl <dlindahl@customink.com>
 Domenic Denicola <d@domenic.me>
@@ -226,6 +231,7 @@ Michał Gołębiowski-Owczarek <m.goleb@gmail.com>
 Michał Wadas <michalwadas@gmail.com>
 Mike Bostock <mbostock@gmail.com>
 Mike Schreifels <mike@schreifels.org>
+Mikhail <connormiha1@gmail.com>
 Mitar <mitar.git@tnode.com>
 Nao Iizuka <iizuka@kyu-mu.net>
 Nick McCurdy <nick@nickmccurdy.com>
@@ -251,6 +257,7 @@ Phil Dokas <pdokas@organic.com>
 Philipp Fritsche <ph.fritsche@gmail.com>
 Philippe Ozil <5071767+pozil@users.noreply.github.com>
 Pierre-Marie Dartus <dartus.pierremarie@gmail.com>
+Piotr Oleś <piotrek.oles@gmail.com>
 Rafał Chłodnicki <rchl2k@gmail.com>
 Rainer Eli <claushellsing@gmail.com>
 Ralph Holzmann <ralphholzmann@gmail.com>
@@ -317,6 +324,7 @@ Tom Hudson <mail@tomnomnom.com>
 Tom Jenkinson <tjenkinson@users.noreply.github.com>
 Tom Taylor <tom@tomtaylor.co.uk>
 ulteriorlife <ulteriorlife@gmail.com>
+ushiboy <ushikic@gmail.com>
 Vadim Baryshev <vadimbaryshev@gmail.com>
 Vegard B. Bugge <vegabug@live.no>
 Viachaslau <pmstss@gmail.com>
@@ -327,6 +335,7 @@ vsemozhetbyt <vsemozhetbyt@gmail.com>
 Vytautas Jakutis <vytautas@jakutis.lt>
 waslogic <waslogic@gmail.com>
 Wei Dai <x@wei23.net>
+Will Harney <62956339+wjhsf@users.noreply.github.com>
 William Cunningham <w.a.cunningham.ii@gmail.com>
 Xavi <xavi.rmz@gmail.com>
 Yonathan <yonathan@gmail.com>

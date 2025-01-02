@@ -26,6 +26,70 @@ Other guidelines:
 * Roughly order changes within those groupings by impact.
 -->
 
+## 25.0.1
+
+* Updated dependencies, notably `tough-cookie`, which no longer prints a deprecation warning.
+
+## 25.0.0
+
+This major release changes the prototype of a jsdom's `EventTarget.prototype` to point to the `Object.prototype` inside the jsdom, instead of pointing to the Node.js `Object.prototype`. Thus, the prototype chain of `Window` stays entirely within the jsdom, never crossing over into the Node.js realm.
+
+This only occurs when `runScripts` is set to non-default values of `"dangerously"` or `"outside-only"`, as with the default value, there is no separate `Object.prototype` inside the jsdom.
+
+This will likely not impact many programs, but could cause some changes in `instanceof` behavior, and so out of an abundance of caution, we're releasing it as a new major version.
+
+## 24.1.3
+
+* Fixed calls to `postMessage()` that were done as a bare property (i.e., `postMessage()` instead of `window.postMessage()`).
+
+## 24.1.2
+
+* Fixed an issue with the `in` operator applied to `EventTarget` methods, e.g. `'addEventListener' in window`, which only appeared in Node.js ≥22.5.0. (legendecas)
+* Fixed the events fired by `blur()`: it no longer fires `focus` and `focusin` on the `Document`, and `blur` and `focusout` no longer have their `relatedTarget` property set. (asamuzaK)
+
+## 24.1.1
+
+* Fixed selection methods to trigger the `selectionchange` event on the `Document` object. (piotr-oles)
+
+## 24.1.0
+
+* Added the `getSetCookie()` method to the `Headers` class. (ushiboy)
+* Fixed the creation and parsing of elements with names from `Object.prototype`, like `"constructor"` or `"toString"`.
+* Updated `rweb-cssom`, which can now parse additional CSS constructs.
+
+## 24.0.0
+
+This release reverts our selector engine back to [`nwsapi`](https://www.npmjs.com/nwsapi). As discussed in [#3659](https://github.com/jsdom/jsdom/issues/3659), the performance regressions from [`@asamuzakjp/dom-selector`](https://www.npmjs.com/package/@asamuzakjp/dom-selector) turned out to be higher than anticipated. In the future, we can revisit `@asamuzakjp/dom-selector` after it reaches `nwsapi`'s performance on the [two real-world benchmarks provided by the community](https://github.com/jsdom/jsdom/issues/3659#issuecomment-1890852609).
+
+Since reverting to `nwsapi` causes several functionality regressions, e.g. removing `:has()` support, we've decided to make this a major version.
+
+Additionally:
+
+* Small fixes to edge-case behavior of the following properties: `input.maxLength`, `input.minLength`, `input.size`, `progress.max`, `tableCell.colSpan`, `tableCell.rowSpan`, `tableCol.span`, `textArea.cols`, `textArea.maxLength`, `textArea.minLength`, `textArea.rows`.
+
+## 23.2.0
+
+This release switches our CSS selector engine from [`nwsapi`](https://www.npmjs.com/nwsapi) to [`@asamuzakjp/dom-selector`](https://www.npmjs.com/package/@asamuzakjp/dom-selector). The new engine is more actively maintained, and supports many new selectors: see [the package's documentation](https://github.com/asamuzaK/domSelector#supported-css-selectors) for the full list. It also works better with shadow trees.
+
+There is a potential of a performance regression due to this change. In our stress test benchmark, which runs most of [these 273 selectors](https://github.com/jsdom/jsdom/blob/908f27d4e348502a9068f0b335a8518d050ef872/benchmark/selectors/sizzle-speed/selectors.large.css) against [this 128 KiB document](https://github.com/jsdom/jsdom/blob/908f27d4e348502a9068f0b335a8518d050ef872/benchmark/selectors/sizzle-speed/selector.html), the new engine completes the benchmark only 0.25x as fast. However, we're hopeful that in more moderate usage this will not be a significant issue. Any help speeding up `@asamuzakjp/dom-selector` is appreciated, and feel free to open an issue if this has had a significant impact on your project.
+
+## 23.1.0
+
+* Added an initial implementation of `ElementInternals`, including the `shadowRoot` getter and the string-valued ARIA properties. (zjffun)
+* Added the string-valued ARIA attribute-reflecting properties to `Element`.
+* Fixed `history.pushState()` and `history.replaceState()` to follow the latest specification, notably with regards to how they handle empty string inputs and what new URLs are possible.
+* Fixed the `input.valueAsANumber` setter to handle `NaN` correctly. (alexandertrefz)
+* Updated various dependencies, including `cssstyle` which contains several bug fixes.
+
+## 23.0.1
+
+* Fixed the incorrect `canvas` peer dependency introduced in v23.0.0.
+
+## 23.0.0
+
+* Node.js v18 is now the minimum supported version.
+* Updated various dependencies, including `whatwg-url` which integrates various additions to the `URL` and `URLSearchParams` objects.
+
 ## 22.1.0
 
 * Added `crypto.randomUUID()`. (jamesbvaughan)
@@ -1131,7 +1195,7 @@ This major release has as its headlining feature a completely re-written `XMLHtt
 
 This major release is focused on massive improvements in speed, URL parsing, and error handling. The potential breaking changes are highlighted in bold below; the largest ones are around the `jsdom.env` error-handling paradigm.
 
-This release also welcomes [long-time contributer](https://github.com/jsdom/jsdom/commits/master?author=Joris-van-der-Wel) [@Joris-van-der-Wel](https://github.com/Joris-van-der-Wel/) to the core team. You may recognize him from earlier changelogs. We're very happy to have his help in making jsdom awesome!
+This release also welcomes [long-time contributer](https://github.com/jsdom/jsdom/commits/main?author=Joris-van-der-Wel) [@Joris-van-der-Wel](https://github.com/Joris-van-der-Wel/) to the core team. You may recognize him from earlier changelogs. We're very happy to have his help in making jsdom awesome!
 
 * **io.js 2.0 onward is now required**, as we have begun using ES2015 features only present there.
 * Improved performance dramatically, by ~10000x in some cases, due to the following changes:
@@ -1182,7 +1246,7 @@ Finally, if you're a loyal jsdom fan whose made it this far into the changelog, 
 * Fixed clicking on submit `<button>`s to submit their containing form; previously only `<input type="submit">` worked. (rxgx)
 * Fixed `document.open()` to return `this`, per spec. (ryanseddon)
 
-Additionally, Joris-van-der-Wel added [a benchmarking framework](https://github.com/jsdom/jsdom/blob/master/Contributing.md#running-the-benchmarks), and a number of benchmarks, which should help us avoid performance regressions going forward, and also make targeted performance fixes. We're already investigating [some real-world issues](https://github.com/jsdom/jsdom/issues/1156) using this framework. Very exciting!
+Additionally, Joris-van-der-Wel added [a benchmarking framework](https://github.com/jsdom/jsdom/blob/main/Contributing.md#running-the-benchmarks), and a number of benchmarks, which should help us avoid performance regressions going forward, and also make targeted performance fixes. We're already investigating [some real-world issues](https://github.com/jsdom/jsdom/issues/1156) using this framework. Very exciting!
 
 ## 5.4.3
 
